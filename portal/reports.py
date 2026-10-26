@@ -20,5 +20,5 @@ def sales():
 @reports.route("/team")
 @manager_required
 def team():
-    # Linked from nowhere: reached only when a person approves it from the map.
+    # Linked from no page.
     return render_template("page.html", title="Team", body="Who works on what.", links=["/reports"])

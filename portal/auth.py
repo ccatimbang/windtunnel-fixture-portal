@@ -1,4 +1,5 @@
 from functools import wraps
+from urllib.parse import urlsplit
 
 from flask import Blueprint, abort, redirect, render_template, request, session, url_for
 
@@ -48,7 +49,9 @@ def login():
 def sign_in():
     username, password = request.form.get("username", ""), request.form.get("password", "")
     target = request.form.get("next") or "/account"
-    if not target.startswith("/") or target.startswith("//"):
+    # Only a path of this site: a browser reads /\host, like //host, as another site.
+    parts = urlsplit(target)
+    if not target.startswith("/") or target.startswith("//") or "\\" in target or parts.scheme or parts.netloc:
         target = "/account"
     if USERS.get(username, ("", ""))[0] != password or not password:
         return render_template("login.html", next=target, error="That user name and password do not match."), 401

@@ -1,9 +1,8 @@
-"""Fixture Portal: a site whose pages are kept for some of its accounts, declared the way a Flask application declares
-them, so Windtunnel can map it from its source and plan runs over it (ADR 0019).
+"""Fixture Portal: a small test site whose pages are kept for some of its accounts.
 
 Three accounts sign in at /login: admin, manager, and member. Every signed-in page is behind login_required; the
-reports and the team behind manager_required, which admins pass too; the admin pages behind admin_required. A page
-no link leads to (/reports/team, /admin/audit) is reached only when a person approves it from the map.
+reports and the team behind manager_required, which admins pass too; the admin pages behind admin_required. Two
+pages, /reports/team and /admin/audit, are linked from no page.
 """
 
 from flask import Flask

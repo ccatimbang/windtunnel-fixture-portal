@@ -20,7 +20,7 @@ def users():
 @admin.route("/audit")
 @admin_required
 def audit():
-    # Linked from nowhere: reached only when a person approves it from the map.
+    # Linked from no page.
     return render_template("page.html", title="Audit log", body="Nothing changed today.", links=["/admin"])
 
 
