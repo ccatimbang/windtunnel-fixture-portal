@@ -10,7 +10,7 @@ PROJECTS = {1: "Launch", 2: "Migration"}
 @account.route("")
 @login_required
 def home():
-    links = ["/account/orders", "/account/settings", "/account/projects"]
+    links = ["/account/orders", "/account/settings", "/account/projects", "/billing/invoices"]
     if session["role"] in ("manager", "admin"):
         links.append("/reports")
     if session["role"] == "admin":
